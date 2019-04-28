@@ -1,8 +1,8 @@
 CREATE TABLE users (
-  id int(11) NOT NULL AUTO_INCREMENT,
+  id serial PRIMARY KEY,
   firstname varchar(45) DEFAULT '',
   lastname varchar(45) DEFAULT '',
   email varchar(255) DEFAULT '', 
   password varchar(50) NOT NULL,
-  PRIMARY_KEY ('id')
+  created_at TIMESTAMP NOT NULL
 );
