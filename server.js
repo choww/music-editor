@@ -3,18 +3,15 @@ import dotenv from 'dotenv';
 import helmet from 'helmet';
 import cors from 'cors';
 import morgan from 'morgan';
+import knex from 'knex';
+import knexConfigs from './knexfile';
 
 dotenv.config();
 
-const db = require('knex')({
-  client: 'pg',
-  connection: {
-    host: '127.0.0.1',
-    user: process.env.POSTGRES_USER,
-    password: process.env.POSTGRES_PASSWORD,
-    database: process.env.POSTGRES_DB,
-  },
-});
+const environment = process.env.NODE_ENV || 'development';
+
+// set up knex
+const db = knex(knexConfigs[environment]);
 
 const app = express();
 
