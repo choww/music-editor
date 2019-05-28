@@ -2,12 +2,13 @@
 
 ## Stack
 * Express.js
+* Vue.js
 * Knex.js
 * Docker
 * PostgreSQL
 
 ## Running the app locally
-1. `docker-compose up`
+3. `docker-compose up` 
 2. In the browser, navigate to `http://localhost:3000`
 
 ## Running migrations
