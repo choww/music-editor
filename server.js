@@ -3,8 +3,10 @@ import dotenv from 'dotenv';
 import helmet from 'helmet';
 import cors from 'cors';
 import morgan from 'morgan';
+import path from 'path';
 import knex from 'knex';
 import knexConfigs from './knexfile';
+// import routes from './src/routes';
 
 dotenv.config();
 
@@ -21,8 +23,15 @@ app.use(cors());
 app.use(morgan('combined'));
 app.use(express.json());
 
-// routes
-app.get('/', (req, res) => res.send('hello world'));
+// backend routes
+// app.use('/api', routes);
+
+// static routes
+app.use(express.static(path.join(__dirname, '/dist')));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
