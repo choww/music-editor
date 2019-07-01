@@ -1,7 +1,7 @@
 FROM node:10.16.0-jessie-slim
 
-WORKDIR /app
-ADD . /app
+WORKDIR /api
+ADD . /api
 
 COPY package.json .
 RUN npm install --quiet

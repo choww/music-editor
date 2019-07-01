@@ -34,12 +34,11 @@ app.get('/', (req, res) => {
 });
 
 // app routes
-app.get('/users', (req, res) => controllers.getUser(req, res, db));
-app.post('/users', (req, res) => controllers.createUser(req, res, db));
-app.post('/songs', (req, res) => controllers.createSong(req, res, db));
+app.get('/api/users', (req, res) => controllers.getUser(req, res, db));
+app.post('/api/users', (req, res) => controllers.createUser(req, res, db));
+app.post('/api/songs', (req, res) => controllers.createSong(req, res, db));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-
