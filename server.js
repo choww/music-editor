@@ -6,7 +6,6 @@ import morgan from 'morgan';
 import path from 'path';
 import knex from 'knex';
 import knexConfigs from './knexfile';
-// import routes from './src/routes';
 
 dotenv.config();
 
