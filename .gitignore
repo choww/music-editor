@@ -1,3 +1,4 @@
-.env
-node_modules
-/dist
+api/.env
+www/node_modules
+api/node_modules
+www/dist

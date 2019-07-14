@@ -2,6 +2,7 @@
   <v-form ref="signup-form" v-model="valid" lazy-validation>
     <v-text-field 
       v-for="field in fields" 
+      :key="field.name"
       v-model="field.name" 
       :label="field.label"
       :required="field.required">

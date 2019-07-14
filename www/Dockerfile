@@ -1,14 +1,11 @@
 FROM node:10.16.0-jessie-slim
 
-WORKDIR /api
-ADD . /api
+WORKDIR /www
+ADD . /www
 
 COPY package.json .
 RUN npm install --quiet
 
-COPY .env .
 COPY . . 
 
-RUN npm run build
-
-EXPOSE 3000:3000
+EXPOSE 8080:8080

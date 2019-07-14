@@ -9,7 +9,9 @@ function getPath(dir) {
 
 module.exports = {
   mode: 'development',
-  entry: ['./public/index.js'],
+  entry: {
+      app: './src/index.js',
+  },
   output: {
     path: getPath('dist'),
     filename: '[name].js',
@@ -18,6 +20,7 @@ module.exports = {
     extensions: ['.js', '.vue'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
+      '@': getPath('src'),
     },
   },
   module: {
@@ -29,15 +32,24 @@ module.exports = {
         {
           test: /\.js$/,
           use: 'babel-loader',
-          include: [getPath('public')],
+          include: [getPath('src')],
         },
         {
           test: /\.(png|jpe?g|gif)$/,
           use: 'file-loader',
         },
         {
-          test: /\.(s*)css$/,
-          use: ['style-loader', 'css-loader', 'sass-loader'],
+          test: /(\.(s*)css|\.sass)$/,
+          include: [
+            getPath('node_modules/vuetify/dist'),
+          ],
+          use: [
+            { loader: 'style-loader' },
+            { loader: 'css-loader', },
+            {
+               loader: 'sass-loader',
+            },
+          ],
         },
       ],
   },

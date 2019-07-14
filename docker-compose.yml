@@ -6,27 +6,26 @@ networks:
 services: 
   api:
     container_name: api
-    build: .
+    build: ./api
     command: npm run start 
     ports:
       - "3000:3000"
     depends_on:
       - postgres
     env_file:
-      - .env
+      - api/.env
     restart: always
     networks:
       - music-editor
   www:
     container_name: www
-    build: .
+    build: 
+      context: ./www
     command: npm run client
     ports: 
       - "8080:8080"
     depends_on:
       - api
-    env_file: 
-      - .env
     restart: always
     networks:
       - music-editor
@@ -40,7 +39,7 @@ services:
     volumes:
       - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
     env_file:
-      - .env
+      - api/.env
     restart: always
     networks:
       - music-editor

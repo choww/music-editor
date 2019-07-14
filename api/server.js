@@ -6,7 +6,7 @@ import morgan from 'morgan';
 import path from 'path';
 import knex from 'knex';
 import knexConfigs from './knexfile';
-import controllers from './src/controllers';
+import controllers from './controllers';
 
 dotenv.config();
 const environment = process.env.NODE_ENV || 'development';
@@ -29,9 +29,9 @@ app.use(express.json());
 // static routes
 app.use(express.static(path.join(__dirname, '/dist')));
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'index.html'));
+// });
 
 // app routes
 app.get('/api/users', (req, res) => controllers.getUser(req, res, db));
